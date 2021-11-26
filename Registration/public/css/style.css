@@ -1,0 +1,31 @@
+html
+{
+    border: 0px;
+    margin: 0px;
+}
+ 
+.hyperlink_design a:link{
+    text-decoration: none; 
+}
+.hyperlink_design a:hover { 
+    text-decoration: none; 
+    color: yellow; 
+        
+}
+.textfield_design
+{
+    padding: 5px 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.textfield_design:focus
+{
+    background-color: #f2f2f2;
+}
+.col-md-6{
+    margin-top: 10px;
+   
+    background-color: beige;
+    text-align: center;
+}

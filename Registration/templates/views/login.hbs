@@ -1,0 +1,65 @@
+
+    <script>
+            function val(v)
+            {
+                document.getElementById(v).innerHTML = "";
+            }
+            function validation()
+            {
+                var flag = true;
+
+                var email2 = document.regform.email2.value;
+                var pass2 = document.regform.pass2.value;
+               
+                var email_pattern = /^([a-zA-Z0-9])(([a-zA-Z0-9])*([\._\+-])*([a-zA-Z0-9]))*@(([a-zA-Z0-9\-])+(\.))+([a-zA-Z]{2,4})+$/;
+                var password_pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+               
+                if (!email2.match(email_pattern))
+                {
+                    document.getElementById('email_error').innerHTML = "Email is not properly formatted";
+                    flag = false;
+                }
+                if (email2 === "")
+                {
+                    document.getElementById('email_error').innerHTML = "Email cannot be empty";
+                    flag = false;
+                }
+                if (!pass2.match(password_pattern))
+                {
+                    document.getElementById('password_error').innerHTML = "Password is not properly formatted (should contain 0-9,special characters)";
+                    flag = false;
+                }
+                if (pass2 === "")
+                {
+                    document.getElementById('password_error').innerHTML = "Password cannot be empty";
+                    flag = false;
+                }
+                return flag;
+            }
+        </script>
+        {{>navbar}}
+    
+    <body>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                    <br><br>
+                    <h3>Login Here</h3>
+                    <Span> or New User ? <a href="register"> Register Now</a></span><br><br>
+                   
+                    <form method="post" name="regform" onsubmit="return validation()" action="log" >
+                       <input type="email" placeholder="Enter Email" name="email2" class="textfield_design" onkeyup="val('email_error')" /> <br> <span id="email_error" style="color: red"> </span><br>
+                       <input type="password" placeholder="Enter Password" name="pass2" class="textfield_design" onkeyup="val('password_error')" /> <br> <span id="password_error" style="color: red"> </span> <br>
+                       <input type="submit" value="Login" class="btn btn-primary" /> <br> <br>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+    
+</body>
+</html>
