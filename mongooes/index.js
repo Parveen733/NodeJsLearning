@@ -9,7 +9,9 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true, 
 const fruitSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique:true
+        
     },
     rating: Number,
     review: String,
@@ -42,7 +44,7 @@ const createfun = async () => {
             review: "nice"
         });
 
-        const result = await Fruit.insertMany([fruit1,fruit2,fruit3,fruit4]);
+        const result = await fruit1.save();
         console.log(result);
     } catch (err) {
         console.log(err);
@@ -77,5 +79,7 @@ const updateData = async (_id) =>{
 
 }
 
-updateData("619ccd3b29499b95038086a9");
+createfun();
+
+// updateData("619ccd3b29499b95038086a9");
 console.log("hello");

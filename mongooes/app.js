@@ -14,7 +14,9 @@ const fruitSchema = new mongoose.Schema({
         lowercase: true,
         trim: true,
         minlength: [3, "minimum 3 length"],
-        maxlength: [30, "max 30 character"]
+        maxlength: [30, "max 30 character"],
+        
+
     },
     rating: {
         type: Number,

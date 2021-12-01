@@ -1,5 +1,6 @@
 const mongoose =require('mongoose');
 const validator = require('validator');
+const bcrypt =require('bcryptjs')
 
 const studentSchema = new mongoose.Schema({
     name:{
@@ -41,6 +42,15 @@ const studentSchema = new mongoose.Schema({
     
 
 });
+
+studentSchema.pre("save", async function(next){
+    // const passwordHash = await bcrypt.hash(password, 10);
+    if(this.isModified("password")){
+    this.password = await bcrypt.hash(this.password, 10);
+      
+    }
+    next();
+})
 
 
 
