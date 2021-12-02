@@ -7,7 +7,8 @@ var cors = require('cors');
 
 
 const mongoose = require('mongoose');
-const router = require('./router/students');
+const router = require('./router/router');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -18,8 +19,8 @@ const port = process.env.PORT || 3000;
 
 
 
-
 app.use(router);
+
 
 app.listen(port, () => {
     console.log(`listebn on port ${port}`);

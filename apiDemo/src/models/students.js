@@ -23,7 +23,7 @@ const studentSchema = new mongoose.Schema({
         match: /^([a-zA-Z0-9])(([a-zA-Z0-9])*([\._\+-])*([a-zA-Z0-9]))*@(([a-zA-Z0-9\-])+(\.))+([a-zA-Z]{2,4})+$/,
         validate(val){
              if(!validator.isEmail(val)){
-                 throw new Error("Please enter valid email...!!!");
+                 return new Error("Please enter valid email...!!!");
              }
         }
     },
@@ -32,14 +32,13 @@ const studentSchema = new mongoose.Schema({
         required:true,
         trim:true,
         unique:true,
-        minlength:[10,"length should be 10"],
-        maxlength:[10,"length should be 10"],
-            match: [/^\d{10}$/,"only digit"]
+        
        },
     password:{
         type: String,
         required:true,
-        trim:true
+        trim:true,
+        match:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
 
     }
 
